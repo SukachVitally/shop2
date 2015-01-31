@@ -30,13 +30,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'south',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djangobower',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +48,29 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'shop2.urls'
+STATICFILES_FINDERS = (
+    "djangobower.finders.BowerFinder",
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
 
-WSGI_APPLICATION = 'shop2.wsgi.application'
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'underscore',
+    'backbone',
+    'marionette',
+    'spin.js',
+    'marionette.backbone.syphon',
+    'jquery-ui',
+    'backbone.picky',
+    'Backbone.localStorage',
+)
+
+BOWER_COMPONENTS_ROOT = '/var/hosts_py/shop2/components/'
+
+ROOT_URLCONF = 'shop.urls'
+
+WSGI_APPLICATION = 'shop.wsgi.application'
 
 
 # Database
