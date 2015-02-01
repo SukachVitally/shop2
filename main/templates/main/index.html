@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load compress %}
 <html lang="en">
 	<head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>test</title>
         <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/dist/css/bootstrap.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}" />
         <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
 	</head>
 	<body screen_capture_injected="true">
@@ -50,17 +51,19 @@
         <script type="text/javascript" src="{% static 'Backbone.localStorage/backbone.localStorage.js' %}"></script>
         <script type="text/javascript" src="{% static 'marionette.backbone.syphon/lib/backbone.syphon.js' %}"></script>
         <script type="text/javascript" src="{% static 'marionette/lib/backbone.marionette.js' %}"></script>
-        <script type="text/javascript" src="/js/apps/config/marionette/templateCache.js"></script>
-        <script type="text/javascript" src="/js/app.js"></script>
         <script type="text/javascript" src="/js/templates/templates.js"></script>
-        <script type="text/javascript" src="/js/entities/header.js"></script>
-        <script type="text/javascript" src="/js/entities/product.js"></script>
-        <script type="text/javascript" src="/js/common/views.js"></script>
-        <script type="text/javascript" src="/js/apps/products/products_app.js"></script>
-        <script type="text/javascript" src="/js/apps/products/list/list_view.js"></script>
-        <script type="text/javascript" src="/js/apps/products/list/list_controller.js"></script>
-        <script type="text/javascript" src="/js/apps/header/header_app.js"></script>
-        <script type="text/javascript" src="/js/apps/header/list/list_view.js"></script>
-        <script type="text/javascript" src="/js/apps/header/list/list_controller.js"></script>
+        {% compress js %}
+        <script src="{% static 'main/js/apps/config/marionette/templateCache.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/app.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/entities/header.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/entities/product.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/common/views.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/apps/products/products_app.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/apps/products/list/list_view.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/apps/products/list/list_controller.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/apps/header/header_app.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/apps/header/list/list_view.coffee' %}" type="text/coffeescript"></script>
+        <script src="{% static 'main/js/apps/header/list/list_controller.coffee' %}" type="text/coffeescript"></script>
+        {% endcompress %}
 	</body>
 </html>

@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djangobower',
+    'compressor',
     'main',
 )
 
@@ -53,7 +54,14 @@ STATICFILES_FINDERS = (
     "djangobower.finders.BowerFinder",
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    'compressor.finders.CompressorFinder',
 )
+
+COMPRESS_PRECOMPILERS = (
+    ('text/coffeescript', 'coffee --compile --stdio'),
+)
+
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'compress')
 
 BOWER_INSTALLED_APPS = (
     'bootstrap',
@@ -68,7 +76,7 @@ BOWER_INSTALLED_APPS = (
     'Backbone.localStorage',
 )
 
-BOWER_COMPONENTS_ROOT = '/var/hosts_py/shop2/components/'
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 
 ROOT_URLCONF = 'shop.urls'
 
