@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djangobower',
+    'main',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +56,7 @@ STATICFILES_FINDERS = (
 )
 
 BOWER_INSTALLED_APPS = (
+    'bootstrap',
     'jquery',
     'underscore',
     'backbone',
@@ -72,6 +74,7 @@ ROOT_URLCONF = 'shop.urls'
 
 WSGI_APPLICATION = 'shop.wsgi.application'
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
