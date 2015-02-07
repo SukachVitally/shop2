@@ -7,5 +7,5 @@ ShopManager.module "HeaderApp.List", (List, ShopManager, Backbone, Marionette, $
   class List.Links extends Marionette.CompositeView
     className: "container-fluid"
     template: "headerLayout"
-    itemView: List.Link
-    itemViewContainer: "ul"
+    childView: List.Link
+    childViewContainer: "ul"

@@ -1,6 +1,6 @@
 ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette, $, _)->
 
-  class List.Layout extends Marionette.Layout
+  class List.Layout extends Marionette.LayoutView
     template: "productListLayout"
     regions:
       panelRegion: "#panel-region"
