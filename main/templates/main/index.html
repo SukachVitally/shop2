@@ -62,7 +62,9 @@
         <script src="{% static 'main/js/apps/header/list/list_controller.coffee' %}" type="text/coffeescript"></script>
         {% endcompress %}
         <script>
-            ShopManager.start();
+            $(function(){
+                ShopManager.start();
+            })
         </script>
 	</body>
 </html>

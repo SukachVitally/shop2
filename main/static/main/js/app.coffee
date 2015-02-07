@@ -17,7 +17,7 @@ root.ShopManager.navigate = (route, options)->
 root.ShopManager.getCurrentRoute = ->
   Backbone.history.fragment
 
-root.ShopManager.on "initialize:after", ->
+root.ShopManager.on "start", ->
   if Backbone.history
     Backbone.history.start()
     if @getCurrentRoute() is ""
