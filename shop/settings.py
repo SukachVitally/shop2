@@ -59,9 +59,12 @@ STATICFILES_FINDERS = (
 
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
+    # ('text/jade', 'name=$(basename {infile} .jade) | jade -c -n "$name"'),
+    # ('text/jade', 'jade -c --no-debug -n test'),
+    ('text/jade', 'clientjade $(dirname {infile})'),
 )
 
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'compress')
+COMPRESS_ROOT = os.path.join(BASE_DIR, '.cache')
 
 BOWER_INSTALLED_APPS = (
     'bootstrap',
@@ -76,7 +79,7 @@ BOWER_INSTALLED_APPS = (
     'Backbone.localStorage',
 )
 
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'vendor')
 
 ROOT_URLCONF = 'shop.urls'
 

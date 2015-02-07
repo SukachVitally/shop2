@@ -38,6 +38,7 @@
             </div>
         </div>
         <script>
+            var template = {};
             $(function() {
                 ShopManager.start();
             });
@@ -51,8 +52,9 @@
         <script type="text/javascript" src="{% static 'Backbone.localStorage/backbone.localStorage.js' %}"></script>
         <script type="text/javascript" src="{% static 'marionette.backbone.syphon/lib/backbone.syphon.js' %}"></script>
         <script type="text/javascript" src="{% static 'marionette/lib/backbone.marionette.js' %}"></script>
-        <script type="text/javascript" src="/js/templates/templates.js"></script>
+
         {% compress js %}
+        <script src="{% static 'main/js/templates/main.jade' %}" type="text/jade"></script>
         <script src="{% static 'main/js/apps/config/marionette/templateCache.coffee' %}" type="text/coffeescript"></script>
         <script src="{% static 'main/js/app.coffee' %}" type="text/coffeescript"></script>
         <script src="{% static 'main/js/entities/header.coffee' %}" type="text/coffeescript"></script>
