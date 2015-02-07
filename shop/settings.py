@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djangobower',
+    'compressor',
+    'main',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,9 +54,20 @@ STATICFILES_FINDERS = (
     "djangobower.finders.BowerFinder",
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    'compressor.finders.CompressorFinder',
 )
 
+COMPRESS_PRECOMPILERS = (
+    ('text/coffeescript', 'coffee --compile --stdio'),
+    # ('text/jade', 'name=$(basename {infile} .jade) | jade -c -n "$name"'),
+    # ('text/jade', 'jade -c --no-debug -n test'),
+    ('text/jade', 'clientjade $(dirname {infile})'),
+)
+
+COMPRESS_ROOT = os.path.join(BASE_DIR, '.cache')
+
 BOWER_INSTALLED_APPS = (
+    'bootstrap',
     'jquery',
     'underscore',
     'backbone',
@@ -66,12 +79,13 @@ BOWER_INSTALLED_APPS = (
     'Backbone.localStorage',
 )
 
-BOWER_COMPONENTS_ROOT = '/var/hosts_py/shop2/components/'
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'vendor')
 
 ROOT_URLCONF = 'shop.urls'
 
 WSGI_APPLICATION = 'shop.wsgi.application'
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
