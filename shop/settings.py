@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'djangobower',
     'compressor',
+    'rest_framework',
     'main',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +52,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 STATICFILES_FINDERS = (
     "djangobower.finders.BowerFinder",
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -59,8 +69,6 @@ STATICFILES_FINDERS = (
 
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
-    # ('text/jade', 'name=$(basename {infile} .jade) | jade -c -n "$name"'),
-    # ('text/jade', 'jade -c --no-debug -n test'),
     ('text/jade', 'clientjade $(dirname {infile})'),
 )
 

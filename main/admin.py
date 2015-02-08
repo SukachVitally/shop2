@@ -1,3 +1,11 @@
 from django.contrib import admin
+from main.models import ProductGroup, Product
 
-# Register your models here.
+class ProductInline(admin.StackedInline):
+    model = Product
+    extra = 3
+
+class ProductAdmin(admin.ModelAdmin):
+    inlines = [ProductInline]
+
+admin.site.register(ProductGroup, ProductAdmin)
