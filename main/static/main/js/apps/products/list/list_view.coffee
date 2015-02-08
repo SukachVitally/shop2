@@ -25,8 +25,8 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
     className: "table table-hover"
     template: "productList"
     emptyView: NoProductsView
-    itemViewContainer: "tbody"
-    itemView: List.Product
+    childViewContainer: "tbody"
+    childView: List.Product
 
     initialize: ->
       @listenTo @collection, "reset", ->
