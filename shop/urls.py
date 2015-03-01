@@ -1,10 +1,8 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
+from shop import views
 
-from django.contrib import admin
-admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^shop/', include('main.urls', namespace="main")),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include('api.urls', namespace="api")),
+    url(r'^products/$', views.ProductList.as_view()),
+    url(r'^product/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
 )

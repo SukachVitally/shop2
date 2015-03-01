@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'compressor',
     'rest_framework',
     'main',
-    'api',
+    'shop',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,9 +89,9 @@ BOWER_INSTALLED_APPS = (
 
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'vendor')
 
-ROOT_URLCONF = 'shop.urls'
+ROOT_URLCONF = 'main.urls'
 
-WSGI_APPLICATION = 'shop.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
