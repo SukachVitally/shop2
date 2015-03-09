@@ -39,8 +39,11 @@ INSTALLED_APPS = (
     'djangobower',
     'compressor',
     'rest_framework',
+    'south',
     'main',
     'shop',
+    'southtut',
+    'southtut2'
 )
 
 MIDDLEWARE_CLASSES = (
