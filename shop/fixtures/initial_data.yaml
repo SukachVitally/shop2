@@ -152,13 +152,6 @@
 - model: shop.productinfo
   pk: 8
   fields:
-    content: Tech 220V
-    product: 6
-    type: 2
-
-- model: shop.productinfo
-  pk: 9
-  fields:
     content: The best product 2015 year
     product: 6
     type: 3

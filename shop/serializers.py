@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from shop.models import Product, ProductGroup, ProductGroupRelation
+from shop.models import Product, ProductGroup, ProductGroupRelation, ProductInfo, ProductInfoType
 
 
 class ProductGroupSerializer(serializers.ModelSerializer):
@@ -17,10 +17,26 @@ class ProductGroupRelationSerializer(serializers.ModelSerializer):
         fields = ('group', )
 
 
+class ProductInfoTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProductInfoType
+        fields = ('id', 'name')
+
+
+class ProductInfoSerializer(serializers.ModelSerializer):
+    type = ProductInfoTypeSerializer()
+
+    class Meta:
+        model = ProductInfo
+        fields = ('content', 'type')
+
+
 class ProductSerializer(serializers.ModelSerializer):
     groups = ProductGroupRelationSerializer(many=True)
+    info = ProductInfoSerializer(many=True)
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'groups')
+        fields = ('id', 'name', 'groups', 'info')
 
