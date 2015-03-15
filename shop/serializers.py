@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from shop.models import Product, ProductGroup
+from shop.models import Product, ProductGroup, ProductGroupRelation
 
 
 class ProductGroupSerializer(serializers.ModelSerializer):
@@ -9,10 +9,18 @@ class ProductGroupSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductGroupRelationSerializer(serializers.ModelSerializer):
     group = ProductGroupSerializer()
 
     class Meta:
+        model = ProductGroupRelation
+        fields = ('group', )
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    groups = ProductGroupRelationSerializer(many=True)
+
+    class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'group')
+        fields = ('id', 'name', 'groups')
 
