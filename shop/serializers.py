@@ -32,11 +32,18 @@ class ProductInfoSerializer(serializers.ModelSerializer):
         fields = ('content', 'type')
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductBaseSerializer(serializers.ModelSerializer):
+    groups = ProductGroupRelationSerializer(many=True)
+
+    class Meta:
+        model = Product
+        fields = ('id', 'name', 'groups')
+
+
+class ProductFullSerializer(serializers.ModelSerializer):
     groups = ProductGroupRelationSerializer(many=True)
     info = ProductInfoSerializer(many=True)
 
     class Meta:
         model = Product
         fields = ('id', 'name', 'groups', 'info')
-
