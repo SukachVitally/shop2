@@ -1,13 +1,20 @@
 from django.contrib import admin
-from shop.models import ProductGroup, Product
+from shop.models import ProductGroup, Product, ProductInfoType, ProductGroupRelation, ProductInfo
 
 
-class ProductInline(admin.StackedInline):
-    model = Product
-    extra = 3
+class ProductGroupRelation(admin.TabularInline):
+    model = ProductGroupRelation
+    extra = 1
+
+
+class ProductInfo(admin.TabularInline):
+    model = ProductInfo
+    extra = 1
 
 
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [ProductInline]
+    inlines = [ProductGroupRelation, ProductInfo]
 
-admin.site.register(ProductGroup, ProductAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductGroup)
+admin.site.register(ProductInfoType)
