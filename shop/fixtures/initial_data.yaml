@@ -1,0 +1,164 @@
+# Product Groups
+- model: shop.productgroup
+  pk: 1
+  fields:
+    name: Phone
+
+- model: shop.productgroup
+  pk: 2
+  fields:
+    name: PC
+
+- model: shop.productgroup
+  pk: 3
+  fields:
+    name: Camera
+
+# Product Info Type
+- model: shop.productinfotype
+  pk: 1
+  fields:
+    name: Description
+
+- model: shop.productinfotype
+  pk: 2
+  fields:
+    name: Technical documentation
+
+- model: shop.productinfotype
+  pk: 3
+  fields:
+    name: Survey
+
+# Product
+- model: shop.product
+  pk: 1
+  fields:
+    name: Iphone6
+
+- model: shop.product
+  pk: 2
+  fields:
+    name: MacBook pro
+
+- model: shop.product
+  pk: 3
+  fields:
+    name: Canon
+
+- model: shop.product
+  pk: 4
+  fields:
+    name: Nikon
+
+- model: shop.product
+  pk: 5
+  fields:
+    name: Lenovo
+
+- model: shop.product
+  pk: 6
+  fields:
+    name: HP
+
+# Product Group Relation
+- model: shop.productgrouprelation
+  pk: 1
+  fields:
+    group: 1
+    product: 1
+
+- model: shop.productgrouprelation
+  pk: 2
+  fields:
+    group: 2
+    product: 2
+
+- model: shop.productgrouprelation
+  pk: 3
+  fields:
+    group: 3
+    product: 3
+
+- model: shop.productgrouprelation
+  pk: 4
+  fields:
+    group: 3
+    product: 4
+
+- model: shop.productgrouprelation
+  pk: 5
+  fields:
+    group: 2
+    product: 5
+
+- model: shop.productgrouprelation
+  pk: 6
+  fields:
+    group: 2
+    product: 6
+
+# Product Info
+- model: shop.productinfo
+  pk: 1
+  fields:
+    content: Test description
+    product: 1
+    type: 1
+
+- model: shop.productinfo
+  pk: 2
+  fields:
+    content: Test description
+    product: 2
+    type: 1
+
+- model: shop.productinfo
+  pk: 3
+  fields:
+    content: Test description
+    product: 3
+    type: 1
+
+- model: shop.productinfo
+  pk: 4
+  fields:
+    content: Test description
+    product: 4
+    type: 1
+
+- model: shop.productinfo
+  pk: 5
+  fields:
+    content: Test description
+    product: 5
+    type: 1
+
+
+- model: shop.productinfo
+  pk: 6
+  fields:
+    content: Test description
+    product: 6
+    type: 1
+
+- model: shop.productinfo
+  pk: 7
+  fields:
+    content: Tech 220V
+    product: 6
+    type: 2
+
+- model: shop.productinfo
+  pk: 8
+  fields:
+    content: Tech 220V
+    product: 6
+    type: 2
+
+- model: shop.productinfo
+  pk: 9
+  fields:
+    content: The best product 2015 year
+    product: 6
+    type: 3

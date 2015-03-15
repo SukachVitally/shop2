@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'djangobower',
     'compressor',
     'rest_framework',
+    'south',
     'main',
     'shop',
 )
