@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from shop.models import Product, ProductGroup, ProductGroupRelation, ProductInfo, ProductInfoType
+from shop.models import Product, ProductGroup, ProductInfo, ProductInfoType
 
 
 class ProductGroupSerializer(serializers.ModelSerializer):
