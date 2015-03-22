@@ -9,14 +9,6 @@ class ProductGroupSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
-class ProductGroupRelationSerializer(serializers.ModelSerializer):
-    group = ProductGroupSerializer()
-
-    class Meta:
-        model = ProductGroupRelation
-        fields = ('group', )
-
-
 class ProductInfoTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -33,7 +25,7 @@ class ProductInfoSerializer(serializers.ModelSerializer):
 
 
 class ProductBaseSerializer(serializers.ModelSerializer):
-    groups = ProductGroupRelationSerializer(many=True)
+    groups = ProductGroupSerializer(many=True)
 
     class Meta:
         model = Product
@@ -41,7 +33,7 @@ class ProductBaseSerializer(serializers.ModelSerializer):
 
 
 class ProductFullSerializer(serializers.ModelSerializer):
-    groups = ProductGroupRelationSerializer(many=True)
+    groups = ProductGroupSerializer(many=True)
     info = ProductInfoSerializer(many=True)
 
     class Meta:

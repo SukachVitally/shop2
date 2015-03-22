@@ -15,7 +15,8 @@ class Product(models.Model):
         return self.productinfo_set.all()
 
     def groups(self):
-        return self.productgrouprelation_set.all()
+        relations = self.productgrouprelation_set.all()
+        return list(map(lambda relation: relation.group, relations))
 
     def __str__(self):
         return self.name
