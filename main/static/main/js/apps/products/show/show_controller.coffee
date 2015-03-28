@@ -1,19 +1,17 @@
-ShopManager.module "ContactsApp.Show", (Show, ContactManager, Backbone, Marionette, $, _)->
+ShopManager.module "ProductsApp.Show", (Show, ContactManager, Backbone, Marionette, $, _)->
   Show.Controller =
-    showContact: (id)->
+    showProduct: (id)->
       loadingView = new ContactManager.Common.Views.Loading
         title: "Artificial Loading Delay"
         message: "Data loading is delayed to demonstrate using a loading view"
 
-      ContactManager.mainRegion.show loadingView
+      ShopManager.mainRegion.show loadingView
 
-      fetchingContact = ContactManager.request "contact:entity", id
-      $.when(fetchingContact).done (contact)->
-        unless contact
-          contactView = new Show.MissingContact()
+      fetchingProduct = ShopManager.request "product:entity", id
+      $.when(fetchingProduct).done (product)->
+        unless product
+          productView = new Show.MissingProduct()
         else
-          contactView = new Show.Contact model: contact
-          contactView.on "contact:edit", (contact)->
-            ContactManager.trigger "contact:edit", contact.get("id")
+          productView = new Show.Product model: product
 
-        ContactManager.mainRegion.show contactView
+        ContactManager.mainRegion.show productView

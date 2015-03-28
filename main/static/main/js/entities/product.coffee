@@ -30,5 +30,5 @@ ShopManager.module "Entities", (Entities, ContactManager, Backbone, Marionette, 
   ShopManager.reqres.setHandler "product:entities", ->
     API.getProductEntities()
 
-  ContactManager.reqres.setHandler "product:entity", (id)->
+  ShopManager.reqres.setHandler "product:entity", (id)->
     API.getProductEntity(id)
