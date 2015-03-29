@@ -1,7 +1,7 @@
-ShopManager.module "ProductsApp.Show", (Show, ContactManager, Backbone, Marionette, $, _)->
+ShopManager.module "ProductsApp.Show", (Show, ShopManager, Backbone, Marionette, $, _)->
   Show.Controller =
     showProduct: (id)->
-      loadingView = new ContactManager.Common.Views.Loading
+      loadingView = new ShopManager.Common.Views.Loading
         title: "Artificial Loading Delay"
         message: "Data loading is delayed to demonstrate using a loading view"
 
@@ -14,4 +14,7 @@ ShopManager.module "ProductsApp.Show", (Show, ContactManager, Backbone, Marionet
         else
           productView = new Show.Product model: product
 
-        ContactManager.mainRegion.show productView
+        productView.on "products:list", (childView, args)->
+          ShopManager.trigger "products:list"
+
+        ShopManager.mainRegion.show productView

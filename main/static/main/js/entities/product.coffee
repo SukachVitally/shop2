@@ -1,29 +1,50 @@
-ShopManager.module "Entities", (Entities, ContactManager, Backbone, Marionette, $, _)->
+ShopManager.module "Entities", (Entities, ShopManager, Backbone, Marionette, $, _)->
   class Entities.Product extends  Backbone.Model
     urlRoot: "/shop/product/"
+    full: false
+
+    isFull: ->
+      @full
+
+    setFull: ->
+      @full = true
+
 
   class Entities.ProductCollection extends Backbone.Collection
     url: "/shop/products/"
     model: Entities.Product
 
+  products = null
+
   API =
     getProductEntities: ->
-      products = new Entities.ProductCollection()
       defer = $.Deferred()
-      products.fetch
-        success: (data)->
-          defer.resolve data
+      if products
+        defer.resolve products
+      else
+        products = new Entities.ProductCollection()
+        products.fetch
+          success: (data)->
+            defer.resolve data
 
       defer.promise()
 
     getProductEntity: (productId)->
-      product = new Entities.Product({id: productId});
       defer = $.Deferred()
-      product.fetch
-        success: (data)->
-          defer.resolve data
-        error: (data)->
-          defer.resolve null
+
+      $.when(@getProductEntities()).done (products)->
+        product = products.get productId
+
+        if product.isFull()
+          defer.resolve product
+        else
+          product.fetch
+            success: (data)->
+              product.setFull()
+              defer.resolve product
+            error: (data)->
+              defer.resolve null
+
       defer.promise()
 
 

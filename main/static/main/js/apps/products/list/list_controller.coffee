@@ -10,6 +10,6 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
         productsListView = new List.Products collection: products
 
         productsListView.on "childview:product:show", (childView, args)->
-          ShopManager.trigger("product:show", args.model.get("id"))
+          ShopManager.trigger "product:show", args.model.get("id")
 
         ShopManager.mainRegion.show productsListView
