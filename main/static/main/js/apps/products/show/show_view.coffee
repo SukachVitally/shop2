@@ -1,7 +1,9 @@
-ContactManager.module "ContactsApp.Show", (Show, ContactManager, Backbone, Marionette, $, _)->
+ShopManager.module "ProductsApp.Show", (Show, ShopManager, Backbone, Marionette, $, _)->
 
-  class Show.MissingContact extends Marionette.ItemView
-    template: "#missing-contact-view"
+  class Show.MissingProduct extends Marionette.ItemView
+    template: "productShowMissingItem"
 
-  class Show.Contact extends Marionette.ItemView
-    template: "#contact-view"
+  class Show.Product extends Marionette.ItemView
+    template: "productShowItem"
+    triggers:
+      "click a.js-back-to-list": "products:list"

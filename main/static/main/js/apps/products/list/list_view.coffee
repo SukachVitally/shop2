@@ -6,13 +6,12 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
       panelRegion: "#panel-region"
       productsRegion: "#products-region"
 
-  class List.Panel extends Marionette.ItemView
-    template: "#contactListPanel"
-
 
   class List.Product extends Marionette.ItemView
     tagName: "tr",
     template: "productListItem"
+    triggers:
+      "click td a.js-show": "product:show"
 
 
   class NoProductsView extends Marionette.ItemView
