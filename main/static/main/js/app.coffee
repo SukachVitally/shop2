@@ -2,9 +2,6 @@ root = exports ? this
 
 root.ShopManager = new Marionette.Application()
 
-#class Dialog extends Marionette.Region.Dialog
-#  el: "#dialog-region"
-
 root.ShopManager.addRegions
   mainRegion: "#main-region"
 #  dialogRegion: Dialog

@@ -1,12 +1,14 @@
 ShopManager.module "HeaderApp.List", (List, ShopManager, Backbone, Marionette, $, _)->
   List.Controller =
     listHeader: ->
-      loadingView = new ShopManager.Common.Views.Loading();
-      ShopManager.headerRegion.show loadingView
-
       links = ShopManager.request "header:entities"
 
       HeaderLinks = new List.Links collection: links
 
-      ShopManager.headerRegion.show HeaderLinks
+      HeaderLinks.on "products:filter", (filterCriterion)->
+        ShopManager.trigger "products:filter", filterCriterion
 
+      ShopManager.commands.setHandler "set:filter:criterion", (criterion)->
+        HeaderLinks.triggerMethod "set:filter:criterion", criterion
+
+      ShopManager.headerRegion.show HeaderLinks
