@@ -16,7 +16,7 @@ ShopManager.module "HeaderApp.List", (List, ShopManager, Backbone, Marionette, $
 
     filterProducts: (e)->
       e.preventDefault()
-      @trigger('products:filter', @$('.js-filter-criterion').val())
+      @trigger 'products:filter', @$('.js-filter-criterion').val()
 
     onSetFilterCriterion: (criterion)->
-      @ui.criterion.val(criterion)
+      @ui.criterion.val criterion

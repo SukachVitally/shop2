@@ -14,7 +14,6 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
             (product)->
               if product.get('name').toLowerCase().indexOf(criterion) isnt -1
                 return product
-              false
 
         if criterion
           filteredProducts.filter criterion

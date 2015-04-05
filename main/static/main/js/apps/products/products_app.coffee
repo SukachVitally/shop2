@@ -7,6 +7,7 @@ ShopManager.module "ProductsApp", (ProductsApp, ShopManager, Backbone, Marionett
   API =
     listProducts: (criterion)->
       ShopManager.ProductsApp.List.Controller.listProducts criterion
+      ShopManager.execute "set:filter:criterion", criterion
 
     showProduct: (id)->
       ShopManager.ProductsApp.Show.Controller.showProduct id
