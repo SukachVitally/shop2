@@ -18,4 +18,4 @@ root.ShopManager.on "start", ->
   if Backbone.history
     Backbone.history.start()
     if @getCurrentRoute() is ""
-      ShopManager.trigger "products:list"
+      root.ShopManager.trigger "products:list"
