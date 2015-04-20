@@ -4,6 +4,7 @@ root.ShopManager = new Marionette.Application()
 
 root.ShopManager.addRegions
   mainRegion: "#main-region"
+  sidebarRegion: "#sidebar-region"
 #  dialogRegion: Dialog
   headerRegion: "#header-region"
 
