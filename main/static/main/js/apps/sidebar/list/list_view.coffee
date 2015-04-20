@@ -3,6 +3,8 @@ ShopManager.module "SidebarApp.List", (List, ShopManager, Backbone, Marionette, 
   class List.Link extends Marionette.ItemView
     template: "sidebarLink"
     tagName: "li"
+    triggers:
+      "click a.js-show-group": "group:show"
 
   class List.Links extends Marionette.CompositeView
     className: "container-fluid"

@@ -1,4 +1,13 @@
 ShopManager.module "Entities", (Entities, ShopManager, Backbone, Marionette, $, _)->
+
+  class Entities.ProductGroup extends  Backbone.Model
+
+
+  class Entities.ProductGroupCollection extends Backbone.Collection
+    url: "/shop/groups/"
+    model: Entities.ProductGroup
+
+
   class Entities.Product extends  Backbone.Model
     urlRoot: "/shop/product/"
     full: false
@@ -8,6 +17,11 @@ ShopManager.module "Entities", (Entities, ShopManager, Backbone, Marionette, $, 
 
     setFull: ->
       @full = true
+
+    inGroup: (id)->
+      id = parseInt(id, 10)
+      groups = new Entities.ProductGroupCollection @get 'groups'
+      groups.where(id: id).length isnt 0
 
 
   class Entities.ProductCollection extends Backbone.Collection
