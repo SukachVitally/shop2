@@ -3,6 +3,7 @@ ShopManager.module "ProductsApp", (ProductsApp, ShopManager, Backbone, Marionett
     appRoutes:
       "products(/filter/criterion::criterion)": "listProducts",
       "product/:id": "showProduct"
+      "group/:id": "listGroupProducts"
 
   API =
     listProducts: (criterion)->
@@ -11,6 +12,9 @@ ShopManager.module "ProductsApp", (ProductsApp, ShopManager, Backbone, Marionett
 
     showProduct: (id)->
       ShopManager.ProductsApp.Show.Controller.showProduct id
+
+    listGroupProducts: (id)->
+      ShopManager.ProductsApp.List.Controller.listGroupProducts id
 
   ShopManager.on "products:list", ->
     ShopManager.navigate "products"
@@ -21,11 +25,15 @@ ShopManager.module "ProductsApp", (ProductsApp, ShopManager, Backbone, Marionett
       ShopManager.navigate "products/filter/criterion:#{criterion}"
     else
       ShopManager.navigate "products"
-    API.listProducts(criterion)
+    API.listProducts criterion
 
   ShopManager.on "product:show", (id)->
     ShopManager.navigate "product/#{id}"
-    API.showProduct(id)
+    API.showProduct id
+
+  ShopManager.on "group:show", (id)->
+    ShopManager.navigate "group/#{id}"
+    API.listGroupProducts id
 
   ShopManager.addInitializer ->
     new ProductsApp.Router

@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from shop.models import Product
-from shop.serializers import ProductBaseSerializer, ProductFullSerializer
+from shop.models import Product, ProductGroup
+from shop.serializers import ProductBaseSerializer, ProductFullSerializer, ProductGroupSerializer
 
 
 class ProductList(generics.ListAPIView):
@@ -12,3 +12,8 @@ class ProductList(generics.ListAPIView):
 class ProductDetail(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductFullSerializer
+
+
+class GroupList(generics.ListAPIView):
+    queryset = ProductGroup.objects.all()
+    serializer_class = ProductGroupSerializer

@@ -4,6 +4,7 @@ root.ShopManager = new Marionette.Application()
 
 root.ShopManager.addRegions
   mainRegion: "#main-region"
+  sidebarRegion: "#sidebar-region"
 #  dialogRegion: Dialog
   headerRegion: "#header-region"
 
@@ -18,4 +19,4 @@ root.ShopManager.on "start", ->
   if Backbone.history
     Backbone.history.start()
     if @getCurrentRoute() is ""
-      ShopManager.trigger "products:list"
+      root.ShopManager.trigger "products:list"
