@@ -1,13 +1,5 @@
 ShopManager.module "Entities", (Entities, ShopManager, Backbone, Marionette, $, _)->
 
-  class Entities.ProductGroup extends  Backbone.Model
-
-
-  class Entities.ProductGroupCollection extends Backbone.Collection
-    url: "/shop/groups/"
-    model: Entities.ProductGroup
-
-
   class Entities.Product extends  Backbone.Model
     urlRoot: "/shop/product/"
     full: false

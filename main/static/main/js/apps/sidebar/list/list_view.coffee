@@ -6,6 +6,9 @@ ShopManager.module "SidebarApp.List", (List, ShopManager, Backbone, Marionette, 
     triggers:
       "click a.js-show-group": "group:show"
 
+    onRender: ->
+      @$el.addClass "active" if @model.selected
+
   class List.Links extends Marionette.CompositeView
     className: "container-fluid"
     template: "sidebarLayout"

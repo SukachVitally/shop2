@@ -17,4 +17,5 @@ ShopManager.module "ProductsApp.Show", (Show, ShopManager, Backbone, Marionette,
         productView.on "products:list", (childView, args)->
           ShopManager.trigger "products:list"
 
+        ShopManager.execute "clear:active:group"
         ShopManager.mainRegion.show productView

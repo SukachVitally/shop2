@@ -24,6 +24,7 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
         productsListView.on "childview:product:show", (childView, args)->
           ShopManager.trigger "product:show", args.model.get("id")
 
+        ShopManager.execute "clear:active:group"
         ShopManager.mainRegion.show productsListView
 
     listGroupProducts: (id)->
@@ -47,4 +48,5 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
         productsListView.on "childview:product:show", (childView, args)->
           ShopManager.trigger "product:show", args.model.get "id"
 
+        ShopManager.execute "set:active:group", id
         ShopManager.mainRegion.show productsListView
