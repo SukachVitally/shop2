@@ -10,4 +10,6 @@ ShopManager.module "SidebarApp.List", (List, ShopManager, Backbone, Marionette, 
     className: "container-fluid"
     template: "sidebarLayout"
     childView: List.Link
-    childViewContainer: "ul"
+    childViewContainer: "ul.js-group-list"
+    triggers:
+      "click a.js-show-all-groups": "products:list"
