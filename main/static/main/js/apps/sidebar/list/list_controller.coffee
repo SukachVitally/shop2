@@ -3,7 +3,7 @@ ShopManager.module "SidebarApp.List", (List, ShopManager, Backbone, Marionette, 
     listSidebar: ->
       sidebarLinks = ShopManager.request "group:entities"
       $.when(sidebarLinks).done (links)->
-        linkToSelect = null
+        linkToSelect = false
         SidebarLinks = new List.Links collection: links
 
         SidebarLinks.on "childview:group:show", (childView, args)->
@@ -19,9 +19,13 @@ ShopManager.module "SidebarApp.List", (List, ShopManager, Backbone, Marionette, 
           if linkToSelect
             linkToSelect.select()
             links.trigger "reset"
+            SidebarLinks.deactivateMainLink()
 
         ShopManager.commands.setHandler "clear:active:group", ->
-          linkToSelect.deselect()
+          SidebarLinks.activateMainLink()
+          if linkToSelect
+            linkToSelect.deselect()
+            linkToSelect = false
           links.trigger "reset"
 
         ShopManager.sidebarRegion.show SidebarLinks

@@ -5,5 +5,3 @@ ShopManager.module "ProductsApp.Show", (Show, ShopManager, Backbone, Marionette,
 
   class Show.Product extends Marionette.ItemView
     template: "productShowItem"
-    triggers:
-      "click a.js-back-to-list": "products:list"

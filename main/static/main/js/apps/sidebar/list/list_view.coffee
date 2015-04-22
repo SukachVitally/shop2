@@ -16,3 +16,9 @@ ShopManager.module "SidebarApp.List", (List, ShopManager, Backbone, Marionette, 
     childViewContainer: "ul.js-group-list"
     triggers:
       "click a.js-show-all-groups": "products:list"
+
+    activateMainLink: ->
+      @$('ul.js-all-group li').addClass 'active'
+
+    deactivateMainLink: ->
+      @$('ul.js-all-group li').removeClass 'active'
