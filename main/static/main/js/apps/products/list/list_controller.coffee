@@ -1,10 +1,13 @@
 ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette, $, _)->
   List.Controller =
-    listProducts: (criterion)->
+    listProducts: (criterion, page = 1)->
       loadingView = new ShopManager.Common.Views.Loading()
       ShopManager.mainRegion.show loadingView
 
       fetchingProducts = ShopManager.request "product:entities"
+
+      productsListLayout = new List.Layout
+      productsListPagination = new List.PaginationLayout
 
       $.when(fetchingProducts).done (products)->
         filteredProducts = ShopManager.Entities.FilteredCollection
@@ -18,14 +21,20 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
         if criterion
           filteredProducts.filter criterion
 
+        filteredProducts.pagination page
+
         productsListView = new List.Products
           collection: filteredProducts
 
         productsListView.on "childview:product:show", (childView, args)->
           ShopManager.trigger "product:show", args.model.get("id")
 
+        productsListLayout.on 'show', ->
+          productsListLayout.productsRegion.show productsListView
+          productsListLayout.paginationRegion.show productsListPagination
+
         ShopManager.execute "clear:active:group"
-        ShopManager.mainRegion.show productsListView
+        ShopManager.mainRegion.show productsListLayout
 
     listGroupProducts: (id)->
       loadingView = new ShopManager.Common.Views.Loading()

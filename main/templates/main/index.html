@@ -50,6 +50,11 @@
         <script src="{% static 'main/js/apps/sidebar/list/list_controller.coffee' %}" type="text/coffeescript"></script>
         {% endcompress %}
         <script>
+            ShopManager.Entities.Config = {
+                "pagination": {
+                    "number": 3
+                }
+            }
             $(function(){
                 ShopManager.start();
             })

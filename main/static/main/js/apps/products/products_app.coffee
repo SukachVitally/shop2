@@ -1,13 +1,13 @@
 ShopManager.module "ProductsApp", (ProductsApp, ShopManager, Backbone, Marionette, $, _)->
   class ProductsApp.Router extends Marionette.AppRouter
     appRoutes:
-      "products(/filter/criterion::criterion)": "listProducts",
+      "products(/filter/criterion::criterion)(?p=:page)": "listProducts",
       "product/:id": "showProduct"
-      "group/:id": "listGroupProducts"
+      "group/:id(?p=:page)": "listGroupProducts"
 
   API =
-    listProducts: (criterion)->
-      ShopManager.ProductsApp.List.Controller.listProducts criterion
+    listProducts: (criterion, page)->
+      ShopManager.ProductsApp.List.Controller.listProducts criterion, page
       ShopManager.execute "set:filter:criterion", criterion
 
     showProduct: (id)->

@@ -46,6 +46,12 @@ ShopManager.module "Entities", (Entities, ShopManager, Backbone, Marionette, $, 
       filtered.reset items
       filtered
 
+    filtered.pagination = (page)->
+      number = Entities.Config.pagination.number
+      items = filtered.slice (page - 1)*number, page*number
+      filtered.reset items
+      filtered
+
     '''
     when the original collection is reset,
     the filtered collection will re-filter itself

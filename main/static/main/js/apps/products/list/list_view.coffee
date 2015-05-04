@@ -3,8 +3,8 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
   class List.Layout extends Marionette.LayoutView
     template: "productListLayout"
     regions:
-      panelRegion: "#panel-region"
       productsRegion: "#products-region"
+      paginationRegion: "#pagination-region"
 
 
   class List.Product extends Marionette.ItemView
@@ -35,5 +35,8 @@ ShopManager.module "ProductsApp.List", (List, ShopManager, Backbone, Marionette,
     onCompositeCollectionRendered: ->
       @appendHtml = (collectionView, itemView, index)->
         collectionView.$el.prepend itemView.el
+
+  class List.PaginationLayout extends Marionette.LayoutView
+    template: "paginationListLayout"
 
 
